@@ -87,7 +87,7 @@ namespace SideBySide
 			Assert.Equal(ConnectionState.Closed, m_connection.State);
 		}
 
-		[Fact]
+		[SkippableFact(ServerFeatures.Timeout)]
 		public async Task CommandTimeoutWithSleepAsync()
 		{
 			using (var cmd = new MySqlCommand("SELECT SLEEP(120);", m_connection))
@@ -153,7 +153,7 @@ namespace SideBySide
 			Assert.Equal(ConnectionState.Closed, m_connection.State);
 		}
 
-		[SkippableFact(Baseline = "https://bugs.mysql.com/bug.php?id=87307")]
+		[SkippableFact(ServerFeatures.Timeout, Baseline = "https://bugs.mysql.com/bug.php?id=87307")]
 		public async Task MultipleCommandTimeoutWithSleepAsync()
 		{
 			var csb = new MySqlConnectionStringBuilder(m_connection.ConnectionString);

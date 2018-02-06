@@ -615,7 +615,7 @@ insert into query_null_parameter (id, value) VALUES (1, 'one'), (2, 'two'), (3, 
 			}
 		}
 
-		[Fact]
+		[SkippableFact(ServerFeatures.Timeout)]
 		public void UseReaderWithoutDisposing()
 		{
 			var csb = AppConfig.CreateConnectionStringBuilder();

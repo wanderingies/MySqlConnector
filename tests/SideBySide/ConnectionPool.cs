@@ -215,7 +215,7 @@ namespace SideBySide
 			}
 		}
 
-		[Fact]
+		[SkippableFact(ServerFeatures.NoProxy)]
 		public async Task ClearConnectionPool()
 		{
 			var csb = AppConfig.CreateConnectionStringBuilder();
@@ -284,7 +284,7 @@ namespace SideBySide
 		}
 
 #if !BASELINE
-		[Theory]
+		[SkippableTheory(ServerFeatures.NoProxy)]
 		[InlineData(1u, 3u, 0u, 5u)]
 		[InlineData(1u, 3u, 3u, 5u)]
 		public async Task ConnectionLifeTime(uint idleTimeout, uint delaySeconds, uint minPoolSize, uint maxPoolSize)

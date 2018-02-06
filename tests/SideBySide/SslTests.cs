@@ -119,7 +119,7 @@ namespace SideBySide
 			}
 		}
 
-		[SkippableFact(ConfigSettings.RequiresSsl)]
+		[SkippableFact(ServerFeatures.NoProxy, ConfigSettings.RequiresSsl)]
 		public async Task ConnectSslTlsVersion()
 		{
 			using (var connection = new MySqlConnection(AppConfig.ConnectionString))

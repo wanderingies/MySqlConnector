@@ -41,6 +41,11 @@ fi
 if [ $# -ge 4 ]
 then
     sed -i "s/run\/mysql/run\/$4/g" ../../tests/SideBySide/config.json
+    if [ "$4" = "azure" ]
+    then
+        sed -i "/PasswordlessUser/d" ../../tests/SideBySide/config.json
+        sed -i "/SecondaryDatabase/d" ../../tests/SideBySide/config.json
+    fi
 fi
 
 if [ $# -ge 5 ]
